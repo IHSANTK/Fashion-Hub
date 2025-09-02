@@ -22,7 +22,11 @@ import {
   Skeleton,
   IconButton,
 } from "@mui/material";
-import { Search, FavoriteBorder, Inventory2Outlined } from "@mui/icons-material";
+import {
+  Search,
+  FavoriteBorder,
+  Inventory2Outlined,
+} from "@mui/icons-material";
 import axios from "axios";
 
 // Import the new components
@@ -256,23 +260,24 @@ const ProductList = () => {
         <Grid container spacing={3}>
           {currentProducts.length === 0 ? (
             <Grid item xs={12}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                py: 8,
-                color: "text.secondary",
-              }}
-            >
-              <Inventory2Outlined sx={{ fontSize: 80, mb: 2, color: "#ccc" }} />
-              <Typography variant="h6" sx={{ fontWeight: 500 }}>
-                No products found
-              </Typography>
-             
-            </Box>
-          </Grid>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  py: 8,
+                  color: "text.secondary",
+                }}
+              >
+                <Inventory2Outlined
+                  sx={{ fontSize: 80, mb: 2, color: "#ccc" }}
+                />
+                <Typography variant="h6" sx={{ fontWeight: 500 }}>
+                  No products found
+                </Typography>
+              </Box>
+            </Grid>
           ) : (
             currentProducts.map((product) => (
               <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
@@ -371,9 +376,16 @@ const ProductList = () => {
                     <Typography
                       variant="caption"
                       color="text.secondary"
-                      sx={{ mb: 1 }}
+                      sx={{
+                        mb: 1,
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2, // limit to 2 lines
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
                     >
-                      5 types of shoes available
+                      {product?.description || ""}
                     </Typography>
 
                     {/* Rating */}
@@ -424,7 +436,6 @@ const ProductList = () => {
                           backgroundColor: "#fff",
                           "&:focus": { outline: "none" },
                           "&:hover": { borderColor: "#ccc" },
-
                         }}
                       >
                         Add Shortlist

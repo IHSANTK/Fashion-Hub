@@ -122,7 +122,7 @@ const AppBarComponent = ({ loading, userData }) => {
           sx={{ justifyContent: "space-between", px: { xs: 2, md: 11.5 } }}
         >
           {/* Left: Logo and Mobile Menu Button */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 5 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 7 }}>
             {isMobile && (
               <IconButton
                 sx={{ "&:focus": { outline: "none" } }}
@@ -141,13 +141,13 @@ const AppBarComponent = ({ loading, userData }) => {
             />
 
             {!isMobile && (
-              <Box sx={{ display: "flex", gap: 4, alignItems: "center" }}>
+              <Box sx={{ display: "flex", gap: 5, alignItems: "center" }}>
                 {navLinks.map((link) => (
                   <Link
                     key={link}
                     underline="none"
                     sx={{
-                      color: "text.primary",
+                      color: "#1D364D",
                       fontWeight: 500,
                       cursor: "pointer",
                       "&:hover": { color: "black" },
