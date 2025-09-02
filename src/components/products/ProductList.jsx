@@ -27,9 +27,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 
 // Import the new components
-import AppBarComponent from "./AppBarComponent";
+import AppBarComponent from "../Layout/AppBarComponent";
 import PromotionalBanner from "./PromotionalBanner";
-import Footer from "./Footer";
+import Footer from "../Layout/Footer";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -96,32 +96,47 @@ const ProductList = () => {
 
   if (loading) {
     return (
-      <Box>
-        <AppBarComponent loading={true} />
-        <Container sx={{ mt: 4 }}>
-          <Grid container maxWidth='xl' spacing={3}>
-            {[...Array(8)].map((_, i) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
-                <Card>
-                  <Skeleton variant="rectangular" height={200} />
-                  <CardContent>
-                    <Skeleton variant="text" height={28} />
-                    <Skeleton variant="text" height={20} />
-                    <Skeleton variant="text" height={20} />
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
+      <Box mt={4}>
+      {/* Banner Skeleton */}
+      
+
+      {/* Product Cards */}
+      <Container maxWidth="xl">
+      <Skeleton
+        variant="rectangular"
+        height={300}
+        width="100%"
+        sx={{ borderRadius: 2, mb: 4 }}
+      />
+        <Grid container spacing={3}>
+          {[...Array(8)].map((_, i) => (
+            <Grid item xs={12} sm={6} md={3} key={i}>
+              <Card sx={{ borderRadius: 2 }}>
+                {/* Image Skeleton */}
+                <Skeleton variant="rectangular" height={150} sx={{ borderRadius: 2 }} />
+                <CardContent>
+                  {/* Text Skeletons */}
+                  <Skeleton variant="text" height={28} sx={{ mb: 1 }} />
+                  <Skeleton variant="text" height={20} sx={{ mb: 1 }} />
+                  <Skeleton variant="text" height={20} sx={{ mb: 2 }} />
+                  {/* Button Skeletons */}
+                  <Skeleton variant="rectangular" height={36} width="48%" sx={{ mr: 1, display: "inline-block", borderRadius: 2 }} />
+                  <Skeleton variant="rectangular" height={36} width="48%" sx={{ display: "inline-block", borderRadius: 2 }} />
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
+
     );
   }
 
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "#fafafa" }}>
       {/* App Bar */}
-      <AppBarComponent loading={false} userData={userData} />
+      {/* <AppBarComponent loading={false} userData={userData} /> */}
 
       {/* Promotional Banner */}
       <PromotionalBanner />
@@ -435,7 +450,7 @@ const ProductList = () => {
       </Container>
 
       {/* Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 };

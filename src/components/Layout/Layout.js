@@ -1,0 +1,41 @@
+// src/components/Layout/Layout.jsx
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import { Box } from "@mui/material";
+import AppBarComponent from "./AppBarComponent";
+import Footer from "./Footer";
+import { useAuth } from "../../contexts/AuthContext";
+
+const Layout = () => {
+  const { userData } = useAuth();
+  const location = useLocation();
+
+  // Example: only show banner on /products page
+  const showBanner = location.pathname === "/products";
+
+  return (
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "#fafafa",
+      }}
+    >
+      {/* Header */}
+      <AppBarComponent loading={false} userData={userData} />
+
+      {/* Optional Banner */}
+
+      {/* Main content */}
+      <Box component="main" sx={{ flexGrow: 1 }}>
+        <Outlet />
+      </Box>
+
+      {/* Footer */}
+      <Footer />
+    </Box>
+  );
+};
+
+export default Layout;
