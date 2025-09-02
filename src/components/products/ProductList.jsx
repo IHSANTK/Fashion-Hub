@@ -23,13 +23,10 @@ import {
   IconButton,
 } from "@mui/material";
 import { Search, FavoriteBorder } from "@mui/icons-material";
-import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 
 // Import the new components
-import AppBarComponent from "../Layout/AppBarComponent";
 import PromotionalBanner from "./PromotionalBanner";
-import Footer from "../Layout/Footer";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -40,7 +37,6 @@ const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const { userData } = useAuth();
 //   const navigate = useNavigate();
 
   const productsPerPage = 16;

@@ -1,5 +1,5 @@
 // Import all images here for easy access
-import loginBg from "./login_bg.png";
+import loginBg from "./login_bg.webp";
 import signupBg from "./signup-bg.png";
 import quoteImg from "./quote.png";
 import logo from "./FashionHub.png";
