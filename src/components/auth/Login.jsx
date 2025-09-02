@@ -37,13 +37,32 @@ const Login = () => {
     resolver: yupResolver(loginSchema),
   });
 
+  const getErrorMessage = (error) => {
+    if (!error?.code) return "Something went wrong. Please try again.";
+
+    switch (error.code) {
+      case "auth/invalid-credential":
+      case "auth/wrong-password":
+        return "Invalid email or password. Please try again.";
+      case "auth/user-not-found":
+        return "No account found with this email.";
+      case "auth/too-many-requests":
+        return "Too many failed attempts. Please try again later.";
+      case "auth/network-request-failed":
+        return "Network error. Please check your internet connection.";
+      default:
+        return "Failed to login. Please try again.";
+    }
+  };
+
   const onSubmit = async (data) => {
     try {
       setError("");
       await login(data.email, data.password);
       navigate("/products");
     } catch (error) {
-      setError(error.message || "Failed to login");
+      console.error("Login error:", error);
+      setError(getErrorMessage(error));
     }
   };
 
@@ -107,11 +126,9 @@ const Login = () => {
                     mb: 3,
                   }}
                 >
-                  Figma ipsum component variant main layer. Create flatten
-                  create effect move strikethrough. Union export plugin bullet
-                  effect hand arrange align. Project project boolean arrow
-                  scale. Rectangle device clip hand figma content frame
-                  underline content.
+                  Figma ipsum component variant main layer. Create flatten create
+                  effect move strikethrough. Union export plugin bullet effect
+                  hand arrange align. Project project boolean arrow scale.
                 </Typography>
               </Box>
 
@@ -178,8 +195,8 @@ const Login = () => {
                 maxWidth: 400,
                 display: "flex",
                 flexDirection: "column",
-                alignItems: { xs: "flex-start", md: "center" }, // ✅ Left on mobile, center on large
-                textAlign: { xs: "left", md: "center" }, // ✅ Responsive alignment
+                alignItems: { xs: "flex-start", md: "center" },
+                textAlign: { xs: "left", md: "center" },
               }}
             >
               <Typography
@@ -200,224 +217,223 @@ const Login = () => {
                   fontSize: { xs: "0.9rem", md: 16 },
                   color: "#808080",
                   fontWeight: 500,
-                  textShadow: {
-                    xs: "none", // ❌ no shadow on mobile
-                    md: "2px 2px 5px rgba(0,0,0,0.3)", // ✅ shadow on large
-                  },
                 }}
               >
                 Please Login your Account
               </Typography>
 
               {error && (
-                <Alert severity="error" sx={{ width: "100%", mb: 2 }}>
+                <Alert severity="error" sx={{ width: "100%", mb: 2,fontSize:'13px' }}>
                   {error}
                 </Alert>
               )}
 
+              {/* Form with space-between layout for mobile */}
               <Box
                 component="form"
                 onSubmit={handleSubmit(onSubmit)}
-                sx={{ width: "100%" }}
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: { xs: "75vh", md: "auto" },
+                  justifyContent: { xs: "space-between", md: "flex-start" },
+                }}
               >
-                {/* Email */}
-                <Box sx={{ mb: 3 }}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      mb: 1,
-                      color: "#000000",
-                      fontWeight: 500,
-                      fontSize: "0.95rem",
-                      textAlign: "left",
-                    }}
-                  >
-                    Email
-                  </Typography>
-                  <TextField
-                    {...register("email")}
-                    required
-                    fullWidth
-                    id="email"
-                    autoComplete="email"
-                    autoFocus
-                    error={!!errors.email}
-                    helperText={errors.email?.message}
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        borderRadius: 3,
-                        backgroundColor: "#FFFFFF",
-                        "& fieldset": { borderColor: "#D3D3D3" },
-                        "&:hover fieldset": { borderColor: "#A0A0A0" },
-                        "&.Mui-focused fieldset": { borderColor: "#000000" },
-                      },
-                      "& .MuiInputBase-input": {
-                        color: "#000000",
-                        fontSize: "1rem",
-                        padding: "10px 14px",
-                      },
-                    }}
-                  />
-                </Box>
-
-                {/* Password */}
-                <Box sx={{ mb: 3 }}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      mb: 1,
-                      color: "#000000",
-                      fontWeight: 500,
-                      fontSize: "0.95rem",
-                      textAlign: "left",
-                    }}
-                  >
-                    Password
-                  </Typography>
-                  <TextField
-                    {...register("password")}
-                    required
-                    fullWidth
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    autoComplete="current-password"
-                    error={!!errors.password}
-                    helperText={errors.password?.message}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            onClick={() => setShowPassword(!showPassword)}
-                            edge="end"
-                            sx={{
-                              color: "#000000",
-                              "&:focus": { outline: "none" },
-                            }}
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        borderRadius: 3,
-                        backgroundColor: "#FFFFFF",
-                        "& fieldset": { borderColor: "#D3D3D3" },
-                        "&:hover fieldset": { borderColor: "#A0A0A0" },
-                        "&.Mui-focused fieldset": { borderColor: "#000000" },
-                      },
-                      "& .MuiInputBase-input": {
-                        color: "#000000",
-                        fontSize: "1rem",
-                        padding: "10px 14px",
-                      },
-                    }}
-                  />
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    mt: 1,
-                    mb: 4,
-                  }}
-                >
-                  <MuiLink
-                    href="#"
-                    variant="body2"
-                    sx={{
-                      textDecoration: "none",
-                      color: "#000000",
-                      fontWeight: 600,
-                      fontSize: "0.9rem",
-                    }}
-                  >
-                    Forgot Password?
-                  </MuiLink>
-                </Box>
-
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{
-                    mt: 7,
-                    mb: 1,
-                    py: { xs: 2, md: 1 },
-                    borderRadius: 3.5,
-                    textTransform: "none",
-                    fontSize: "1rem",
-                    fontWeight: "bold",
-                    backgroundColor: "#000000",
-                    color: "#FFFFFF",
-                    "&:hover": { backgroundColor: "#1A1A1A" },
-                  }}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Signing in..." : "Sign in"}
-                </Button>
-
-                {/* Divider */}
-                <Box
-                  sx={{
-                    my: 3,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: "45px",
-                      height: "1px",
-                      backgroundColor: "#808080",
-                    }}
-                  />
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "#808080",
-                      fontSize: "0.9rem",
-                      fontWeight: 500,
-                      mx: 3,
-                    }}
-                  >
-                    OR
-                  </Typography>
-                  <Box
-                    sx={{
-                      width: "45px",
-                      height: "1px",
-                      backgroundColor: "#808080",
-                    }}
-                  />
-                </Box>
-
-                <Box sx={{ textAlign: "center" }}>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "#808080",
-                      fontSize: "0.9rem",
-                    }}
-                  >
-                    Didn't have an Account?{" "}
-                    <MuiLink
-                      component={Link}
-                      to="/signup"
-                      variant="body2"
+                {/* Top section */}
+                <Box>
+                  {/* Email */}
+                  <Box sx={{ mb: 3 }}>
+                    <Typography
+                      variant="body1"
                       sx={{
-                        fontWeight: "bold",
+                        mb: 1,
                         color: "#000000",
-                        textDecoration: "none",
-                        "&:hover": { textDecoration: "underline" },
+                        fontWeight: 500,
+                        fontSize: "0.95rem",
+                        textAlign: "left",
                       }}
                     >
-                      Sign-up
+                      Email
+                    </Typography>
+                    <TextField
+                      {...register("email")}
+                      required
+                      fullWidth
+                      id="email"
+                      autoComplete="email"
+                      autoFocus
+                      error={!!errors.email}
+                      helperText={errors.email?.message}
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          borderRadius: 3,
+                          "& fieldset": { borderColor: "#D3D3D3" },
+                          "&:hover fieldset": { borderColor: "#A0A0A0" },
+                          "&.Mui-focused fieldset": { borderColor: "#000000" },
+                        },
+                        "& .MuiInputBase-input": {
+                          fontSize: "1rem",
+                          padding: "10px 14px",
+                        },
+                      }}
+                    />
+                  </Box>
+
+                  {/* Password */}
+                  <Box sx={{ mb: 3 }}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        mb: 1,
+                        color: "#000000",
+                        fontWeight: 500,
+                        fontSize: "0.95rem",
+                        textAlign: "left",
+                      }}
+                    >
+                      Password
+                    </Typography>
+                    <TextField
+                      {...register("password")}
+                      required
+                      fullWidth
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      autoComplete="current-password"
+                      error={!!errors.password}
+                      helperText={errors.password?.message}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={() => setShowPassword(!showPassword)}
+                              edge="end"
+                              sx={{
+                                color: "#000000",
+                                "&:focus": { outline: "none" },
+                              }}
+                            >
+                              {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          borderRadius: 3,
+                          "& fieldset": { borderColor: "#D3D3D3" },
+                          "&:hover fieldset": { borderColor: "#A0A0A0" },
+                          "&.Mui-focused fieldset": { borderColor: "#000000" },
+                        },
+                        "& .MuiInputBase-input": {
+                          fontSize: "1rem",
+                          padding: "10px 14px",
+                        },
+                      }}
+                    />
+                  </Box>
+
+                  {/* Forgot Password */}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      mt: 1,
+                      mb: { xs: 2, md: 4 },
+                    }}
+                  >
+                    <MuiLink
+                      href="#"
+                      variant="body2"
+                      sx={{
+                        textDecoration: "none",
+                        color: "#000000",
+                        fontWeight: 600,
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      Forgot Password?
                     </MuiLink>
-                  </Typography>
+                  </Box>
+                </Box>
+
+                {/* Bottom section */}
+                <Box>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{
+                      mt: { xs: 2, md: 7 },
+                      mb: 1,
+                      py: { xs: 2, md: 1 },
+                      borderRadius: 3.5,
+                      textTransform: "none",
+                      fontSize: "1rem",
+                      fontWeight: "bold",
+                      backgroundColor: "#000000",
+                      color: "#FFFFFF",
+                      "&:hover": { backgroundColor: "#1A1A1A" },
+                    }}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Signing in..." : "Sign in"}
+                  </Button>
+
+                  {/* Divider */}
+                  <Box
+                    sx={{
+                      my: 3,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Box
+                      sx={{ width: "45px", height: "1px", backgroundColor: "#808080" }}
+                    />
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "#808080",
+                        fontSize: "0.9rem",
+                        fontWeight: 500,
+                        mx: 3,
+                      }}
+                    >
+                      OR
+                    </Typography>
+                    <Box
+                      sx={{ width: "45px", height: "1px", backgroundColor: "#808080" }}
+                    />
+                  </Box>
+
+                  {/* Sign-up */}
+                  <Box sx={{ textAlign: "center" }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "#808080",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      Didn't have an Account?{" "}
+                      <MuiLink
+                        component={Link}
+                        to="/signup"
+                        variant="body2"
+                        sx={{
+                          fontWeight: "bold",
+                          color: "#000000",
+                          textDecoration: "none",
+                          "&:hover": { textDecoration: "underline" },
+                        }}
+                      >
+                        Sign-up
+                      </MuiLink>
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
             </Box>
