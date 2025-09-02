@@ -107,7 +107,8 @@ const AppBarComponent = ({ loading, userData }) => {
   return (
     <>
       <AppBar
-        position="static"
+         position="sticky"
+         top={0}
         sx={{
           backgroundColor: "#fff",
           color: "#222",
