@@ -37,7 +37,7 @@ const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-//   const navigate = useNavigate();
+  //   const navigate = useNavigate();
 
   const productsPerPage = 16;
 
@@ -93,39 +93,51 @@ const ProductList = () => {
   if (loading) {
     return (
       <Box mt={4}>
-      {/* Banner Skeleton */}
-      
+        {/* Banner Skeleton */}
 
-      {/* Product Cards */}
-      <Container maxWidth="xl">
-      <Skeleton
-        variant="rectangular"
-        height={300}
-        width="100%"
-        sx={{ borderRadius: 2, mb: 4 }}
-      />
-        <Grid container spacing={3}>
-          {[...Array(8)].map((_, i) => (
-            <Grid item xs={12} sm={6} md={3} key={i}>
-              <Card sx={{ borderRadius: 2 }}>
-                {/* Image Skeleton */}
-                <Skeleton variant="rectangular" height={150} sx={{ borderRadius: 2 }} />
-                <CardContent>
-                  {/* Text Skeletons */}
-                  <Skeleton variant="text" height={28} sx={{ mb: 1 }} />
-                  <Skeleton variant="text" height={20} sx={{ mb: 1 }} />
-                  <Skeleton variant="text" height={20} sx={{ mb: 2 }} />
-                  {/* Button Skeletons */}
-                  <Skeleton variant="rectangular" height={36} width="48%" sx={{ mr: 1, display: "inline-block", borderRadius: 2 }} />
-                  <Skeleton variant="rectangular" height={36} width="48%" sx={{ display: "inline-block", borderRadius: 2 }} />
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
-
+        {/* Product Cards */}
+        <Container maxWidth="xl">
+          <Skeleton
+            variant="rectangular"
+            height={300}
+            width="100%"
+            sx={{ borderRadius: 2, mb: 4 }}
+          />
+          <Grid container spacing={3}>
+            {[...Array(8)].map((_, i) => (
+              <Grid item xs={12} sm={6} md={3} key={i}>
+                <Card sx={{ borderRadius: 2 }}>
+                  {/* Image Skeleton */}
+                  <Skeleton
+                    variant="rectangular"
+                    height={150}
+                    sx={{ borderRadius: 2 }}
+                  />
+                  <CardContent>
+                    {/* Text Skeletons */}
+                    <Skeleton variant="text" height={28} sx={{ mb: 1 }} />
+                    <Skeleton variant="text" height={20} sx={{ mb: 1 }} />
+                    <Skeleton variant="text" height={20} sx={{ mb: 2 }} />
+                    {/* Button Skeletons */}
+                    <Skeleton
+                      variant="rectangular"
+                      height={36}
+                      width="48%"
+                      sx={{ mr: 1, display: "inline-block", borderRadius: 2 }}
+                    />
+                    <Skeleton
+                      variant="rectangular"
+                      height={36}
+                      width="48%"
+                      sx={{ display: "inline-block", borderRadius: 2 }}
+                    />
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
     );
   }
 
@@ -147,7 +159,12 @@ const ProductList = () => {
 
         {/* Filters */}
         <Box sx={{ mb: 4 }}>
-          <Grid container spacing={2} alignItems="center">
+          <Grid
+            container
+            spacing={2}
+            alignItems="center"
+            justifyContent="center"
+          >
             {/* Search Input */}
             <Grid item xs={12} md={3}>
               <TextField
@@ -202,13 +219,18 @@ const ProductList = () => {
                       borderColor: "#ccc !important",
                     },
                   },
+                  "& .MuiInputLabel-root": {
+                    color: "#000", // default black
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#000 !important", // keep black when focused
+                  },
                 }}
               >
                 <InputLabel
                   sx={{
                     top: -3,
                     fontSize: "0.95rem",
-                    color: "#777",
                   }}
                 >
                   Category
