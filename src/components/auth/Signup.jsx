@@ -202,19 +202,25 @@ const Signup = () => {
                 maxWidth: 400,
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
               }}
             >
-              <Typography
-                component="h1"
-                variant="h4"
-                sx={{ mb: 1, fontWeight: "bold" }}
-              >
-                Create an Account
-              </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-                Are you ready to join us! Let's create Account
-              </Typography>
+              {/* Title + Subtitle */}
+              <Box sx={{ textAlign: { xs: "left", sm: "center" } }}>
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  sx={{ mb: 1, fontWeight: "bold" }}
+                >
+                  Create an Account
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ fontSize: "13px", mb: 4 }}
+                >
+                  Are you ready to join us! Let&apos;s create Account
+                </Typography>
+              </Box>
 
               {error && (
                 <Alert severity="error" sx={{ width: "100%", mb: 2 }}>
@@ -337,13 +343,6 @@ const Signup = () => {
                     type="date"
                     error={!!errors.dateOfBirth}
                     helperText={errors.dateOfBirth?.message}
-                    // InputProps={{
-                    //   endAdornment: (
-                    //     <InputAdornment position="end">
-                    //       <CalendarToday sx={{ color: "#808080" }} />
-                    //     </InputAdornment>
-                    //   ),
-                    // }}
                     InputLabelProps={{
                       shrink: true,
                     }}

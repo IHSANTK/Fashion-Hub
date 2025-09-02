@@ -19,11 +19,26 @@ const theme = createTheme({
     secondary: { main: "#764ba2" },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: [
+      'Poppins',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      'Oxygen',
+      'Ubuntu',
+      'Cantarell',
+      '"Fira Sans"',
+      '"Droid Sans"',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
     h4: { fontWeight: 700 },
     h5: { fontWeight: 600 },
     h6: { fontWeight: 600 },
   },
+  
   components: {
     MuiButton: { styleOverrides: { root: { borderRadius: 8, textTransform: "none", fontWeight: 600 } } },
     MuiCard: { styleOverrides: { root: { borderRadius: 12 } } },

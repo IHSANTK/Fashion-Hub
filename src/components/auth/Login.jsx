@@ -21,7 +21,6 @@ import {
 } from "@mui/icons-material";
 import { useAuth } from "../../contexts/AuthContext";
 import { loginSchema } from "../../utils/validationSchemas";
-// Import background image from assets
 import { loginBg, quoteImg } from "../../assets/images";
 
 const Login = () => {
@@ -42,7 +41,6 @@ const Login = () => {
     try {
       setError("");
       await login(data.email, data.password);
-
       navigate("/products");
     } catch (error) {
       setError(error.message || "Failed to login");
@@ -52,7 +50,7 @@ const Login = () => {
   return (
     <Box sx={{ width: "100vw", height: "100vh", display: "flex" }}>
       <Grid container sx={{ width: "100%", height: "100%", margin: 0 }}>
-        {/* Left Side - Visual Content */}
+        {/* Left Side */}
         <Grid
           item
           xs={12}
@@ -86,9 +84,7 @@ const Login = () => {
               },
             }}
           >
-            {/* Text Overlay at Bottom */}
             <Box sx={{ position: "relative", zIndex: 2, width: "100%" }}>
-              {/* Quote Text */}
               <Box sx={{ mb: 6 }}>
                 <Box
                   component="img"
@@ -119,7 +115,6 @@ const Login = () => {
                 </Typography>
               </Box>
 
-              {/* Name and Email with Carousel Arrows */}
               <Box
                 sx={{
                   display: "flex",
@@ -150,26 +145,11 @@ const Login = () => {
                   </Typography>
                 </Box>
 
-                {/* Carousel Arrows */}
                 <Box sx={{ display: "flex", gap: 0.5 }}>
-                  <IconButton
-                    sx={{
-                      color: "white",
-                      padding: 0.5,
-
-                      "&:focus": { outline: "none" },
-                    }}
-                  >
+                  <IconButton sx={{ color: "white", p: 0.5 }}>
                     <NavigateBefore sx={{ width: 35, height: 35 }} />
                   </IconButton>
-                  <IconButton
-                    sx={{
-                      color: "white",
-                      padding: 0.5,
-
-                      "&:focus": { outline: "none" },
-                    }}
-                  >
+                  <IconButton sx={{ color: "white", p: 0.5 }}>
                     <NavigateNext sx={{ width: 35, height: 35 }} />
                   </IconButton>
                 </Box>
@@ -198,17 +178,34 @@ const Login = () => {
                 maxWidth: 400,
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
+                alignItems: { xs: "flex-start", md: "center" }, // ✅ Left on mobile, center on large
+                textAlign: { xs: "left", md: "center" }, // ✅ Responsive alignment
               }}
             >
               <Typography
                 component="h1"
                 variant="h4"
-                sx={{ mb: 1, fontWeight: "bold" }}
+                sx={{
+                  mb: 1,
+                  fontWeight: "bold",
+                  fontSize: { xs: "1.6rem", md: "2rem" },
+                }}
               >
                 Welcome Back!!
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+              <Typography
+                variant="subtitle"
+                sx={{
+                  mb: 4,
+                  fontSize: { xs: "0.9rem", md: 16 },
+                  color: "#808080",
+                  fontWeight: 500,
+                  textShadow: {
+                    xs: "none", // ❌ no shadow on mobile
+                    md: "2px 2px 5px rgba(0,0,0,0.3)", // ✅ shadow on large
+                  },
+                }}
+              >
                 Please Login your Account
               </Typography>
 
@@ -223,7 +220,7 @@ const Login = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 sx={{ width: "100%" }}
               >
-                {/* Email Field */}
+                {/* Email */}
                 <Box sx={{ mb: 3 }}>
                   <Typography
                     variant="body1"
@@ -232,6 +229,7 @@ const Login = () => {
                       color: "#000000",
                       fontWeight: 500,
                       fontSize: "0.95rem",
+                      textAlign: "left",
                     }}
                   >
                     Email
@@ -249,15 +247,9 @@ const Login = () => {
                       "& .MuiOutlinedInput-root": {
                         borderRadius: 3,
                         backgroundColor: "#FFFFFF",
-                        "& fieldset": {
-                          borderColor: "#D3D3D3",
-                        },
-                        "&:hover fieldset": {
-                          borderColor: "#A0A0A0",
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000000",
-                        },
+                        "& fieldset": { borderColor: "#D3D3D3" },
+                        "&:hover fieldset": { borderColor: "#A0A0A0" },
+                        "&.Mui-focused fieldset": { borderColor: "#000000" },
                       },
                       "& .MuiInputBase-input": {
                         color: "#000000",
@@ -268,7 +260,7 @@ const Login = () => {
                   />
                 </Box>
 
-                {/* Password Field */}
+                {/* Password */}
                 <Box sx={{ mb: 3 }}>
                   <Typography
                     variant="body1"
@@ -277,6 +269,7 @@ const Login = () => {
                       color: "#000000",
                       fontWeight: 500,
                       fontSize: "0.95rem",
+                      textAlign: "left",
                     }}
                   >
                     Password
@@ -285,7 +278,6 @@ const Login = () => {
                     {...register("password")}
                     required
                     fullWidth
-                    label=""
                     type={showPassword ? "text" : "password"}
                     id="password"
                     autoComplete="current-password"
@@ -295,7 +287,6 @@ const Login = () => {
                       endAdornment: (
                         <InputAdornment position="end">
                           <IconButton
-                            aria-label="toggle password visibility"
                             onClick={() => setShowPassword(!showPassword)}
                             edge="end"
                             sx={{
@@ -312,15 +303,9 @@ const Login = () => {
                       "& .MuiOutlinedInput-root": {
                         borderRadius: 3,
                         backgroundColor: "#FFFFFF",
-                        "& fieldset": {
-                          borderColor: "#D3D3D3",
-                        },
-                        "&:hover fieldset": {
-                          borderColor: "#A0A0A0",
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000000",
-                        },
+                        "& fieldset": { borderColor: "#D3D3D3" },
+                        "&:hover fieldset": { borderColor: "#A0A0A0" },
+                        "&.Mui-focused fieldset": { borderColor: "#000000" },
                       },
                       "& .MuiInputBase-input": {
                         color: "#000000",
@@ -367,16 +352,14 @@ const Login = () => {
                     fontWeight: "bold",
                     backgroundColor: "#000000",
                     color: "#FFFFFF",
-                    "&:hover": {
-                      backgroundColor: "#1A1A1A",
-                    },
+                    "&:hover": { backgroundColor: "#1A1A1A" },
                   }}
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Signing in..." : "Sign in"}
                 </Button>
 
-                {/* Custom OR Divider */}
+                {/* Divider */}
                 <Box
                   sx={{
                     my: 3,
@@ -429,9 +412,7 @@ const Login = () => {
                         fontWeight: "bold",
                         color: "#000000",
                         textDecoration: "none",
-                        "&:hover": {
-                          textDecoration: "underline",
-                        },
+                        "&:hover": { textDecoration: "underline" },
                       }}
                     >
                       Sign-up
