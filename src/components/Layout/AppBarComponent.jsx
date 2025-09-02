@@ -244,7 +244,7 @@ const AppBarComponent = ({ loading, userData }) => {
                   <Typography
                     variant="subtitle2"
                     sx={{ fontWeight: 700, color: "#1A2C3D" }}
-                  >
+                  > 
                     {userData?.fullName || ""}
                   </Typography>
                 </Box>
@@ -253,6 +253,7 @@ const AppBarComponent = ({ loading, userData }) => {
           </Box>
         </Toolbar>
       </AppBar>
+
 
       {/* Profile Popover */}
       <Popover
