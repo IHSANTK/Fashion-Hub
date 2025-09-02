@@ -22,7 +22,7 @@ import {
   Skeleton,
   IconButton,
 } from "@mui/material";
-import { Search, FavoriteBorder } from "@mui/icons-material";
+import { Search, FavoriteBorder, Inventory2Outlined } from "@mui/icons-material";
 import axios from "axios";
 
 // Import the new components
@@ -179,10 +179,10 @@ const ProductList = () => {
                 }}
                 sx={{
                   backgroundColor: "#fff",
-                  borderRadius: 1,
+                  borderRadius: 2,
                   "& .MuiOutlinedInput-root": {
                     height: 46,
-                    borderRadius: 1,
+                    borderRadius: 2,
                     "& fieldset": {
                       borderColor: "#ccc",
                     },
@@ -208,7 +208,7 @@ const ProductList = () => {
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     height: 46,
-                    borderRadius: 1,
+                    borderRadius: 2,
                     "& fieldset": {
                       borderColor: "#ccc",
                     },
@@ -256,8 +256,23 @@ const ProductList = () => {
         <Grid container spacing={3}>
           {currentProducts.length === 0 ? (
             <Grid item xs={12}>
-              <Typography variant="body1">No products found.</Typography>
-            </Grid>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                py: 8,
+                color: "text.secondary",
+              }}
+            >
+              <Inventory2Outlined sx={{ fontSize: 80, mb: 2, color: "#ccc" }} />
+              <Typography variant="h6" sx={{ fontWeight: 500 }}>
+                No products found
+              </Typography>
+             
+            </Box>
+          </Grid>
           ) : (
             currentProducts.map((product) => (
               <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
