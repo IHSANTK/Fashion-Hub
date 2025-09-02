@@ -16,6 +16,7 @@ import {
 import { Person, Email, Phone, CalendarToday, Logout } from "@mui/icons-material";
 import { useAuth } from "../../contexts/AuthContext";
 
+
 const Profile = () => {
   const { userData, logout } = useAuth();
   const navigate = useNavigate();
