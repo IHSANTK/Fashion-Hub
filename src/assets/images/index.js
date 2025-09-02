@@ -3,7 +3,7 @@ import loginBg from "./login_bg.webp";
 import signupBg from "./signup-bg.webp";
 import quoteImg from "./quote.png";
 import logo from "./FashionHub.png";
-import girlImg from "./girlImg.png";
+import girlImg from "./girlImg.webp";
 import cart from "./cart.png";
 // import avatar from "./avatar.png";
 
