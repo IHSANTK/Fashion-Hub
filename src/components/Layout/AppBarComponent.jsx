@@ -44,9 +44,8 @@ const AppBarComponent = ({ loading, userData }) => {
   const handleMobileMenuOpen = () => setMobileMenuOpen(true);
   const handleMobileMenuClose = () => setMobileMenuOpen(false);
 
-  // Profile popup handlers - Fixed to prevent body shake
+  // Profile popup handlers
   const handleProfileClick = (event) => {
-    // Prevent default to avoid any potential scroll issues
     event.preventDefault();
     setProfileAnchorEl(event.currentTarget);
   };
@@ -72,6 +71,15 @@ const AppBarComponent = ({ loading, userData }) => {
 
   const profileOpen = Boolean(profileAnchorEl);
   const profileId = profileOpen ? "profile-popover" : undefined;
+
+  // Function to get dynamic greeting based on current time
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) return "Good Morning!";
+    if (hour >= 12 && hour < 17) return "Good Afternoon!";
+    if (hour >= 17 && hour < 21) return "Good Evening!";
+    return "Good Night!";
+  };
 
   if (loading) {
     return (
@@ -176,8 +184,8 @@ const AppBarComponent = ({ loading, userData }) => {
                 sx={{
                   bgcolor: "#f9f6f4",
                   borderRadius: "50%",
-                  width: isMobile ? 36 : 44, // smaller on mobile
-                  height: isMobile ? 36 : 44, // smaller on mobile
+                  width: isMobile ? 36 : 44,
+                  height: isMobile ? 36 : 44,
                   position: "relative",
                   "&:focus": { outline: "none" },
                 }}
@@ -187,7 +195,7 @@ const AppBarComponent = ({ loading, userData }) => {
                   src={cart}
                   alt="cart"
                   sx={{
-                    width: isMobile ? 16 : 20, // smaller on mobile
+                    width: isMobile ? 16 : 20,
                     height: isMobile ? 16 : 20,
                     objectFit: "contain",
                   }}
@@ -202,8 +210,8 @@ const AppBarComponent = ({ loading, userData }) => {
                   alt={userData?.fullName || "User"}
                   src={userData?.avatar || ""}
                   sx={{
-                    width: isMobile ? 36 : 44, // smaller on mobile
-                    height: isMobile ? 36 : 44, // smaller on mobile
+                    width: isMobile ? 36 : 44,
+                    height: isMobile ? 36 : 44,
                     cursor: "pointer",
                     "&:focus": { outline: "none" },
                   }}
@@ -224,20 +232,20 @@ const AppBarComponent = ({ loading, userData }) => {
                 />
               </Box>
 
-              {/* Greeting + Name (hide text on mobile) */}
+              {/* Dynamic Greeting + Name */}
               {!isMobile && (
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
                   <Typography
                     variant="caption"
                     sx={{ color: "#C0C3C6", fontSize: "0.8rem" }}
                   >
-                    Good Morning!
+                    {getGreeting()}
                   </Typography>
                   <Typography
                     variant="subtitle2"
                     sx={{ fontWeight: 700, color: "#1A2C3D" }}
                   >
-                    {userData?.fullName || "Scarlet Johnson"}
+                    {userData?.fullName || ""}
                   </Typography>
                 </Box>
               )}
@@ -246,7 +254,7 @@ const AppBarComponent = ({ loading, userData }) => {
         </Toolbar>
       </AppBar>
 
-      {/* Profile Popover - Fixed to prevent body shake */}
+      {/* Profile Popover */}
       <Popover
         id={profileId}
         open={profileOpen}
@@ -260,7 +268,7 @@ const AppBarComponent = ({ loading, userData }) => {
           vertical: "top",
           horizontal: "right",
         }}
-        disableScrollLock={true} // This prevents the scrollbar from disappearing
+        disableScrollLock={true}
         PaperProps={{
           sx: {
             width: 200,
@@ -309,9 +317,7 @@ const AppBarComponent = ({ loading, userData }) => {
             <ListItem
               button
               key={link}
-              onClick={() => {
-                handleMobileMenuClose();
-              }}
+              onClick={() => handleMobileMenuClose()}
             >
               <ListItemText primary={link} />
             </ListItem>

@@ -10,6 +10,7 @@ import Signup from "./components/auth/Signup";
 import ProductList from "./components/products/ProductList";
 import Profile from "./components/profile/Profile";
 import Layout from "./components/Layout/Layout";
+import PublicRoute from "./components/auth/PublicRoute";
 
 // Create a custom theme
 const theme = createTheme({
@@ -38,8 +39,22 @@ function App() {
         <Router>
           <Routes>
             {/* Public routes */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <PublicRoute>
+                  <Signup />
+                </PublicRoute>
+              }
+            />
 
             {/* Protected routes with Layout */}
             <Route
@@ -56,7 +71,7 @@ function App() {
             {/* Default route */}
             <Route path="/" element={<Navigate to="/products" replace />} />
 
-            {/* Catch all route */}
+            {/* Catch-all route */}
             <Route path="*" element={<Navigate to="/products" replace />} />
           </Routes>
         </Router>
