@@ -187,7 +187,7 @@ const Login = () => {
                 variant="h4"
                 sx={{
                   mb: 1,
-                  fontWeight: "bold",
+                  fontWeight: 600,
                   fontSize: { xs: "1.6rem", md: "2rem" },
                 }}
               >
@@ -345,7 +345,7 @@ const Login = () => {
                   sx={{
                     mt: 7,
                     mb: 1,
-                    py: 1,
+                    py: { xs: 2, md: 1 },
                     borderRadius: 3.5,
                     textTransform: "none",
                     fontSize: "1rem",

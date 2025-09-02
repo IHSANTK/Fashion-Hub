@@ -209,14 +209,14 @@ const Signup = () => {
                 <Typography
                   component="h1"
                   variant="h5"
-                  sx={{ mb: 1, fontWeight: "bold" }}
+                  sx={{ mb: 1, fontWeight: 600}}
                 >
                   Create an Account
                 </Typography>
                 <Typography
                   variant="body1"
-                  color="text.secondary"
-                  sx={{ fontSize: "13px", mb: 4 }}
+                  color="gray"
+                  sx={{ fontSize: "13px", mb: 4,fontWeight:500 }}
                 >
                   Are you ready to join us! Let&apos;s create Account
                 </Typography>
@@ -483,10 +483,10 @@ const Signup = () => {
                   sx={{
                     mt: 7,
                     mb: 1,
-                    py: 1,
-                    borderRadius: 3.5,
+                    py: {xs:2,md:1},
+                    borderRadius: 4,
                     textTransform: "none",
-                    fontSize: "1rem",
+                    fontSize: 18,
                     fontWeight: "bold",
                     backgroundColor: "#000000",
                     color: "#FFFFFF",
