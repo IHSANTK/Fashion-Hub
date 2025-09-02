@@ -23,7 +23,6 @@ const Profile = () => {
 //   const theme = useTheme();
 //   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-
   const handleLogout = async () => {
     try {
       await logout();
