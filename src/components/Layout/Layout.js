@@ -21,9 +21,7 @@ const Layout = () => {
       {/* Header */}
       <AppBarComponent loading={false} userData={userData} />
 
-      {/* Optional Banner */}
 
-      {/* Main content */}
       <Box component="main" sx={{ flexGrow: 1 }}>
         <Outlet />
       </Box>
