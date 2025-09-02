@@ -423,6 +423,8 @@ const ProductList = () => {
                           color: "text.primary",
                           backgroundColor: "#fff",
                           "&:focus": { outline: "none" },
+                          "&:hover": { borderColor: "#ccc" },
+
                         }}
                       >
                         Add Shortlist
