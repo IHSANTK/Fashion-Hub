@@ -35,7 +35,7 @@ A fully responsive React application with authentication, profile management, an
 
 ## Tech Stack
 
-- **React 19** with TypeScript
+- **React 19** 
 - **React Router v6** for navigation
 - **React Context API** for state management
 - **Firebase Authentication & Firestore**
