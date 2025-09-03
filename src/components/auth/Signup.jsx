@@ -208,14 +208,14 @@ const Signup = () => {
                 <Typography
                   component="h1"
                   variant="h5"
-                  sx={{ mb: 1, fontWeight: 600}}
+                  sx={{ mb: 1, fontWeight: 600 }}
                 >
                   Create an Account
                 </Typography>
                 <Typography
                   variant="body1"
                   color="gray"
-                  sx={{ fontSize: "13px", mb: 4,fontWeight:500 }}
+                  sx={{ fontSize: "13px", mb: 4, fontWeight: 500 }}
                 >
                   Are you ready to join us! Let&apos;s create Account
                 </Typography>
@@ -482,7 +482,7 @@ const Signup = () => {
                   sx={{
                     mt: 7,
                     mb: 1,
-                    py: {xs:2,md:1},
+                    py: { xs: 2, md: 1 },
                     borderRadius: 4,
                     textTransform: "none",
                     fontSize: 18,
@@ -491,6 +491,10 @@ const Signup = () => {
                     color: "#FFFFFF",
                     "&:hover": {
                       backgroundColor: "#1A1A1A",
+                    },
+                    "&.Mui-disabled": {
+                      backgroundColor: "#BDBDBD", // light gray when disabled
+                      color: "#FFFFFF",
                     },
                   }}
                   disabled={isSubmitting}

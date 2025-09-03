@@ -380,6 +380,10 @@ const Login = () => {
                       backgroundColor: "#000000",
                       color: "#FFFFFF",
                       "&:hover": { backgroundColor: "#1A1A1A" },
+                      "&.Mui-disabled": {
+                        backgroundColor: "#BDBDBD", // light gray
+                        color: "#FFFFFF",
+                      },
                     }}
                     disabled={isSubmitting}
                   >
