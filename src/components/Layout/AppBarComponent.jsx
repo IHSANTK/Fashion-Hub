@@ -120,7 +120,6 @@ const AppBarComponent = ({ loading, userData }) => {
         <Toolbar
           sx={{ justifyContent: "space-between", px: { xs: 2, md: 11.5 } }}
         >
-          {/* Left: Logo and Mobile Menu Button */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 7 }}>
             {isMobile && (
               <IconButton

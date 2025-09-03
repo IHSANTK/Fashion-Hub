@@ -35,7 +35,7 @@ A fully responsive React application with authentication, profile management, an
 
 ## Tech Stack
 
-- **React 19** with TypeScript
+- **React 19** 
 - **React Router v6** for navigation
 - **React Context API** for state management
 - **Firebase Authentication & Firestore**
@@ -101,21 +101,21 @@ A fully responsive React application with authentication, profile management, an
 src/
 ├── components/
 │   ├── auth/
-│   │   ├── Login.tsx
-│   │   ├── Signup.tsx
-│   │   └── PrivateRoute.tsx
+│   │   ├── Login.jsx
+│   │   ├── Signup.jsx
+│   │   └── PrivateRoute.jsx
 │   ├── products/
-│   │   └── ProductList.tsx
+│   │   └── ProductList.jsx
 │   └── profile/
-│       └── Profile.tsx
+│       └── Profile.jsx
 ├── contexts/
-│   └── AuthContext.tsx
+│   └── AuthContext.jsx
 ├── firebase/
-│   └── config.ts
+│   └── config.js
 ├── utils/
-│   └── validationSchemas.ts
-├── App.tsx
-└── index.tsx
+│   └── validationSchemas.js
+├── App.jsx
+└── index.jsx
 ```
 
 ## Routes
