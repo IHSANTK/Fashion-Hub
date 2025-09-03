@@ -1,4 +1,3 @@
-// import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
@@ -10,8 +9,7 @@ import {
   Grid,
   Divider,
   IconButton,
-  //   useTheme,
-  //   useMediaQuery,
+
 } from "@mui/material";
 import {
   Person,
@@ -25,8 +23,7 @@ import { useAuth } from "../../contexts/AuthContext";
 const Profile = () => {
   const { userData, logout } = useAuth();
   const navigate = useNavigate();
-  //   const theme = useTheme();
-  //   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
 
   const handleLogout = async () => {
     try {
@@ -68,7 +65,6 @@ const Profile = () => {
                 borderRadius: 3,
               }}
             >
-              {/* Logout Icon Top Right */}
               <Box
                 sx={{
                   position: "absolute",
@@ -115,7 +111,6 @@ const Profile = () => {
             </Paper>
           </Grid>
 
-          {/* Profile Details - Full Width */}
           <Grid item xs={12}>
             <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
               <Typography

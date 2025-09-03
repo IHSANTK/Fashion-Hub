@@ -1,4 +1,3 @@
-// src/components/ProductList/Footer.jsx
 import React from "react";
 import { Box, Typography } from "@mui/material";
 

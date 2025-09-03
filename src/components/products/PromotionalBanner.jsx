@@ -1,5 +1,3 @@
-// src/components/ProductList/PromotionalBanner.jsx
-import React from "react";
 import { Container, Grid, Box, Typography, Button } from "@mui/material";
 import { girlImg } from "../../assets/images";
 

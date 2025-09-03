@@ -72,7 +72,6 @@ const AppBarComponent = ({ loading, userData }) => {
   const profileOpen = Boolean(profileAnchorEl);
   const profileId = profileOpen ? "profile-popover" : undefined;
 
-  // Function to get dynamic greeting based on current time
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour >= 5 && hour < 12) return "Good Morning!";

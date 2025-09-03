@@ -2,8 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Replace these values with your actual Firebase project configuration
-// Get these from: Firebase Console → Project Settings → General → Your Apps → Web App
+
 const firebaseConfig = {
     apiKey: "AIzaSyBhZ4OhFpghJm1krMDQZAt1BLmgNk9PJ6Y",
     authDomain: "user-management-system-abcfe.firebaseapp.com",

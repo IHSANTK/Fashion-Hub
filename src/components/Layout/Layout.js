@@ -7,7 +7,6 @@ import { useAuth } from "../../contexts/AuthContext";
 const Layout = () => {
   const { userData } = useAuth();
 
-  // Example: only show banner on /products page
 
   return (
     <Box

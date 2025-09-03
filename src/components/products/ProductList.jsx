@@ -1,6 +1,4 @@
-// src/components/ProductList/ProductList.jsx
-import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   Container,
   Grid,
@@ -29,7 +27,6 @@ import {
 } from "@mui/icons-material";
 import axios from "axios";
 
-// Import the new components
 import PromotionalBanner from "./PromotionalBanner";
 
 const ProductList = () => {
@@ -147,9 +144,6 @@ const ProductList = () => {
 
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "#fafafa" }}>
-      {/* App Bar */}
-      {/* <AppBarComponent loading={false} userData={userData} /> */}
-
       {/* Promotional Banner */}
       <PromotionalBanner />
 

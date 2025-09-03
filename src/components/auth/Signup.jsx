@@ -21,7 +21,6 @@ import {
 } from "@mui/icons-material";
 import { useAuth } from "../../contexts/AuthContext";
 import { signupSchema } from "../../utils/validationSchemas";
-// Import background image from assets
 import { signupBg, quoteImg } from "../../assets/images";
 
 const Signup = () => {

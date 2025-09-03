@@ -1,14 +1,12 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { doc, setDoc, getDoc,serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../firebase/config";
-
-
 
 const AuthContext = createContext();
 
@@ -25,13 +23,15 @@ export function AuthProvider({ children }) {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-
   const signup = async (email, password, userData) => {
     try {
-  
       // Step 1: Create user in Firebase Auth
-      const result = await createUserWithEmailAndPassword(auth, email, password);
-  
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
       // Step 2: Save user in Firestore
       await setDoc(doc(db, "users", result.user.uid), {
         ...userData,
@@ -39,14 +39,11 @@ export function AuthProvider({ children }) {
         createdAt: serverTimestamp(),
       });
 
-  
       return result.user;
-  
     } catch (error) {
       throw error;
     }
   };
-  
 
   async function login(email, password) {
     await signInWithEmailAndPassword(auth, email, password);
