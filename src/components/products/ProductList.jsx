@@ -247,7 +247,7 @@ const ProductList = () => {
                   <MenuItem value="">All Categories</MenuItem>
                   {categories.map((category) => (
                     <MenuItem key={category} value={category}>
-                      {category}
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
                     </MenuItem>
                   ))}
                 </Select>
