@@ -218,7 +218,7 @@ const Login = () => {
                   fontSize: { xs: "0.9rem", md: 16 },
                   color: "#808080",
                   fontWeight: 500,
-                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)", // 👈 shadow effect
+                  textShadow: "3px 4px 5px rgba(0, 0, 0, 0.2)", // 👈 shadow effect
                 }}
               >
                 Please Login your Account
