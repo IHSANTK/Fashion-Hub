@@ -101,21 +101,21 @@ A fully responsive React application with authentication, profile management, an
 src/
 ├── components/
 │   ├── auth/
-│   │   ├── Login.tsx
-│   │   ├── Signup.tsx
-│   │   └── PrivateRoute.tsx
+│   │   ├── Login.jsx
+│   │   ├── Signup.jsx
+│   │   └── PrivateRoute.jsx
 │   ├── products/
-│   │   └── ProductList.tsx
+│   │   └── ProductList.jsx
 │   └── profile/
-│       └── Profile.tsx
+│       └── Profile.jsx
 ├── contexts/
-│   └── AuthContext.tsx
+│   └── AuthContext.jsx
 ├── firebase/
-│   └── config.ts
+│   └── config.js
 ├── utils/
-│   └── validationSchemas.ts
-├── App.tsx
-└── index.tsx
+│   └── validationSchemas.js
+├── App.jsx
+└── index.jsx
 ```
 
 ## Routes
