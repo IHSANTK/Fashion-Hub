@@ -126,9 +126,10 @@ const Login = () => {
                     mb: 3,
                   }}
                 >
-                  Figma ipsum component variant main layer. Create flatten create
-                  effect move strikethrough. Union export plugin bullet effect
-                  hand arrange align. Project project boolean arrow scale.
+                  Figma ipsum component variant main layer. Create flatten
+                  create effect move strikethrough. Union export plugin bullet
+                  effect hand arrange align. Project project boolean arrow
+                  scale.
                 </Typography>
               </Box>
 
@@ -211,19 +212,23 @@ const Login = () => {
                 Welcome Back!!
               </Typography>
               <Typography
-                variant="subtitle"
+                variant="subtitle1"
                 sx={{
                   mb: 4,
                   fontSize: { xs: "0.9rem", md: 16 },
                   color: "#808080",
                   fontWeight: 500,
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)", // 👈 shadow effect
                 }}
               >
                 Please Login your Account
               </Typography>
 
               {error && (
-                <Alert severity="error" sx={{ width: "100%", mb: 2,fontSize:'13px' }}>
+                <Alert
+                  severity="error"
+                  sx={{ width: "100%", mb: 2, fontSize: "13px" }}
+                >
                   {error}
                 </Alert>
               )}
@@ -314,7 +319,11 @@ const Login = () => {
                                 "&:focus": { outline: "none" },
                               }}
                             >
-                              {showPassword ? <VisibilityOff /> : <Visibility />}
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
                             </IconButton>
                           </InputAdornment>
                         ),
@@ -391,7 +400,11 @@ const Login = () => {
                     }}
                   >
                     <Box
-                      sx={{ width: "45px", height: "1px", backgroundColor: "#808080" }}
+                      sx={{
+                        width: "45px",
+                        height: "1px",
+                        backgroundColor: "#808080",
+                      }}
                     />
                     <Typography
                       variant="body2"
@@ -405,7 +418,11 @@ const Login = () => {
                       OR
                     </Typography>
                     <Box
-                      sx={{ width: "45px", height: "1px", backgroundColor: "#808080" }}
+                      sx={{
+                        width: "45px",
+                        height: "1px",
+                        backgroundColor: "#808080",
+                      }}
                     />
                   </Box>
 
