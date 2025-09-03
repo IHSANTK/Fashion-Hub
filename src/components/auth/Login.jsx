@@ -69,7 +69,6 @@ const Login = () => {
   return (
     <Box sx={{ width: "100vw", height: "100vh", display: "flex" }}>
       <Grid container sx={{ width: "100%", height: "100%", margin: 0 }}>
-        {/* Left Side */}
         <Grid
           item
           xs={12}
@@ -176,7 +175,6 @@ const Login = () => {
           </Box>
         </Grid>
 
-        {/* Right Side - Login Form */}
         <Grid item xs={12} md={4} sx={{ p: 0 }}>
           <Box
             sx={{
@@ -233,7 +231,6 @@ const Login = () => {
                 </Alert>
               )}
 
-              {/* Form with space-between layout for mobile */}
               <Box
                 component="form"
                 onSubmit={handleSubmit(onSubmit)}
@@ -245,7 +242,6 @@ const Login = () => {
                   justifyContent: { xs: "space-between", md: "flex-start" },
                 }}
               >
-                {/* Top section */}
                 <Box>
                   {/* Email */}
                   <Box sx={{ mb: 3 }}>
