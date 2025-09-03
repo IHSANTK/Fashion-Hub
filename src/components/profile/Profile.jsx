@@ -9,7 +9,6 @@ import {
   Grid,
   Divider,
   IconButton,
-
 } from "@mui/material";
 import {
   Person,
@@ -23,7 +22,6 @@ import { useAuth } from "../../contexts/AuthContext";
 const Profile = () => {
   const { userData, logout } = useAuth();
   const navigate = useNavigate();
-
 
   const handleLogout = async () => {
     try {
@@ -123,16 +121,34 @@ const Profile = () => {
               </Typography>
 
               <Grid container spacing={3}>
+                {/* Full Name */}
                 <Grid item xs={12} sm={6}>
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-                    <Person sx={{ mr: 2, color: "primary.main" }} />
-                    <Box>
-                      <Typography variant="body2" color="#3A4980">
+                  <Box
+                    sx={{ display: "flex", alignItems: "flex-start", mb: 3 }}
+                  >
+                    <Person
+                      sx={{ mr: 2, color: "primary.main", flexShrink: 0 }}
+                    />
+                    <Box sx={{ flex: 1, minWidth: 0 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "#3A4980",
+                          fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                        }}
+                      >
                         Full Name
                       </Typography>
                       <Typography
                         variant="h6"
-                        sx={{ fontWeight: "bold", color: "#3A4980" }}
+                        sx={{
+                          fontWeight: "bold",
+                          color: "#3A4980",
+                          fontSize: { xs: "0.9rem", sm: "1.1rem" },
+                          wordBreak: "break-word",
+                          overflowWrap: "anywhere",
+                          maxWidth: "100%",
+                        }}
                       >
                         {userData?.fullName || "Not provided"}
                       </Typography>
@@ -140,16 +156,34 @@ const Profile = () => {
                   </Box>
                 </Grid>
 
+                {/* Email */}
                 <Grid item xs={12} sm={6}>
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-                    <Email sx={{ mr: 2, color: "primary.main" }} />
-                    <Box>
-                      <Typography variant="body2" color="#3A4980">
+                  <Box
+                    sx={{ display: "flex", alignItems: "flex-start", mb: 3 }}
+                  >
+                    <Email
+                      sx={{ mr: 2, color: "primary.main", flexShrink: 0 }}
+                    />
+                    <Box sx={{ flex: 1, minWidth: 0 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "#3A4980",
+                          fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                        }}
+                      >
                         Email Address
                       </Typography>
                       <Typography
                         variant="h6"
-                        sx={{ fontWeight: "bold", color: "#3A4980" }}
+                        sx={{
+                          fontWeight: "bold",
+                          color: "#3A4980",
+                          fontSize: { xs: "0.9rem", sm: "1.1rem" },
+                          wordBreak: "break-word",
+                          overflowWrap: "anywhere",
+                          maxWidth: "100%",
+                        }}
                       >
                         {userData?.email || "Not provided"}
                       </Typography>
@@ -157,16 +191,34 @@ const Profile = () => {
                   </Box>
                 </Grid>
 
+                {/* Mobile Number */}
                 <Grid item xs={12} sm={6}>
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-                    <Phone sx={{ mr: 2, color: "primary.main" }} />
-                    <Box>
-                      <Typography variant="body2" color="#3A4980">
+                  <Box
+                    sx={{ display: "flex", alignItems: "flex-start", mb: 3 }}
+                  >
+                    <Phone
+                      sx={{ mr: 2, color: "primary.main", flexShrink: 0 }}
+                    />
+                    <Box sx={{ flex: 1, minWidth: 0 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "#3A4980",
+                          fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                        }}
+                      >
                         Mobile Number
                       </Typography>
                       <Typography
                         variant="h6"
-                        sx={{ fontWeight: "bold", color: "#3A4980" }}
+                        sx={{
+                          fontWeight: "bold",
+                          color: "#3A4980",
+                          fontSize: { xs: "0.9rem", sm: "1.1rem" },
+                          wordBreak: "break-word",
+                          overflowWrap: "anywhere",
+                          maxWidth: "100%",
+                        }}
                       >
                         {userData?.mobile || "Not provided"}
                       </Typography>
@@ -174,16 +226,34 @@ const Profile = () => {
                   </Box>
                 </Grid>
 
+                {/* Date of Birth */}
                 <Grid item xs={12} sm={6}>
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-                    <CalendarToday sx={{ mr: 2, color: "primary.main" }} />
-                    <Box>
-                      <Typography variant="body2" color="#3A4980">
+                  <Box
+                    sx={{ display: "flex", alignItems: "flex-start", mb: 3 }}
+                  >
+                    <CalendarToday
+                      sx={{ mr: 2, color: "primary.main", flexShrink: 0 }}
+                    />
+                    <Box sx={{ flex: 1, minWidth: 0 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "#3A4980",
+                          fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                        }}
+                      >
                         Date of Birth
                       </Typography>
                       <Typography
                         variant="h6"
-                        sx={{ fontWeight: "bold", color: "#3A4980" }}
+                        sx={{
+                          fontWeight: "bold",
+                          color: "#3A4980",
+                          fontSize: { xs: "0.9rem", sm: "1.1rem" },
+                          wordBreak: "break-word",
+                          overflowWrap: "anywhere",
+                          maxWidth: "100%",
+                        }}
                       >
                         {userData?.dateOfBirth
                           ? formatDate(userData.dateOfBirth)
