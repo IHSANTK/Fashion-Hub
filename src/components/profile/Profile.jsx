@@ -10,18 +10,23 @@ import {
   Grid,
   Divider,
   IconButton,
-//   useTheme,
-//   useMediaQuery,
+  //   useTheme,
+  //   useMediaQuery,
 } from "@mui/material";
-import { Person, Email, Phone, CalendarToday, Logout } from "@mui/icons-material";
+import {
+  Person,
+  Email,
+  Phone,
+  CalendarToday,
+  Logout,
+} from "@mui/icons-material";
 import { useAuth } from "../../contexts/AuthContext";
-
 
 const Profile = () => {
   const { userData, logout } = useAuth();
   const navigate = useNavigate();
-//   const theme = useTheme();
-//   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  //   const theme = useTheme();
+  //   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleLogout = async () => {
     try {
@@ -76,7 +81,7 @@ const Profile = () => {
                   sx={{
                     bgcolor: "#fff",
                     color: "#3A4980",
-                 
+                    "&:focus": { outline: "none" },
                   }}
                 >
                   <Logout />
