@@ -163,10 +163,22 @@ const Login = () => {
                 </Box>
 
                 <Box sx={{ display: "flex", gap: 0.5 }}>
-                  <IconButton sx={{ color: "white", p: 0.5 }}>
+                  <IconButton
+                    sx={{
+                      color: "white",
+                      p: 0.5,
+                      "&:focus": { outline: "none" },
+                    }}
+                  >
                     <NavigateBefore sx={{ width: 35, height: 35 }} />
                   </IconButton>
-                  <IconButton sx={{ color: "white", p: 0.5 }}>
+                  <IconButton
+                    sx={{
+                      color: "white",
+                      p: 0.5,
+                      "&:focus": { outline: "none" },
+                    }}
+                  >
                     <NavigateNext sx={{ width: 35, height: 35 }} />
                   </IconButton>
                 </Box>
